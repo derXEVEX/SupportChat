@@ -16,5 +16,9 @@ Rails.application.routes.draw do
     post "dashboard/change_name", to: "dashboard#change_name", as: :change_name_dashboard_index
     post "dashboard/change_password", to: "dashboard#change_password", as: :change_password_dashboard_index
 
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+  end
+
 
 end

@@ -1,4 +1,33 @@
+<h2>Profilinformationen</h2>
+<p><strong>Name:</strong> <%= current_user.name %></p>
+<p><strong>E-Mail:</strong> <%= current_user.email %></p>
 
+<hr>
+
+<h2>Name ändern</h2>
+<%= form_with url: change_name_dashboard_index_path, method: :post, local: true do |form| %>
+  <%= form.label :name, "Neuer Name" %>
+  <%= form.text_field :name, value: current_user.name %>
+  <%= form.submit "Name ändern" %>
+<% end %>
+
+<hr>
+
+<h2>Passwort ändern</h2>
+<%= form_with url: change_password_dashboard_index_path, method: :post, local: true do |form| %>
+  <%= form.label :current_password, "Aktuelles Passwort" %>
+  <%= form.password_field :current_password %><br>
+
+  <%= form.label :new_password, "Neues Passwort" %>
+  <%= form.password_field :new_password %><br>
+
+  <%= form.label :new_password_confirmation, "Neues Passwort bestätigen" %>
+  <%= form.password_field :new_password_confirmation %><br>
+
+  <%= form.submit "Passwort ändern" %>
+<% end %>
+
+<hr>
 <h2>Neue E-Mail eintragen</h2>
 <%= form_with url: change_email_dashboard_index_path, method: :post, local: true do |form| %>
   <%= form.label :email, "Neue E-Mail" %>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/confirm_email', to: 'users#confirm_email', as: :confirmation
 
     post "dashboard/change_email", to: "dashboard#change_email", as: :change_email_dashboard_index
+    post "dashboard/change_name", to: "dashboard#change_name", as: :change_name_dashboard_index
+    post "dashboard/change_password", to: "dashboard#change_password", as: :change_password_dashboard_index
 
 
 end

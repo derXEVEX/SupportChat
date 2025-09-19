@@ -1,0 +1,12 @@
+
+<h2>Neue E-Mail eintragen</h2>
+<%= form_with url: change_email_dashboard_index_path, method: :post, local: true do |form| %>
+  <%= form.label :email, "Neue E-Mail" %>
+  <%= form.email_field :email %>
+  <%= form.submit "E-Mail ändern" %>
+<% end %>
+
+<div class="logout-section">
+  <%= button_to "Abmelden", logout_path, method: :delete, class: "logout-button" %>
+</div>
+

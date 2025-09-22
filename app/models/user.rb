@@ -6,6 +6,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, inclusion: { in: ROLES }
   validates :password, length: { minimum: 12 }, if: -> { new_record? || !password.nil? }
+  validates :password_confirmation, presence: true, if: -> { new_record? || !password.nil? }
+
+
 
   before_validation :set_default_role, on: :create
 

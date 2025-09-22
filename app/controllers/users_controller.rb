@@ -9,9 +9,10 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path, notice: "Registrierung erfolgreich!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
+
 
   def confirm_email
     user = User.find_by(confirmation_token: params[:token])

@@ -1,9 +1,74 @@
-<h1>Benutzer anzeigen</h1>
+<div class="admin-container">
+  <div class="admin-header">
+    <div>
+      <h1 class="admin-title">Benutzerdetails</h1>
+      <p class="admin-subtitle">Details für <%= @user.name %></p>
+    </div>
+    <div class="admin-actions">
+      <%= link_to "Bearbeiten", edit_admin_user_path(@user), class: "admin-btn admin-btn-primary" %>
+      <%= link_to "Zurück", admin_users_path, class: "admin-btn admin-btn-secondary" %>
+    </div>
+  </div>
 
-<p><strong>Name:</strong> <%= @user.name %></p>
-<p><strong>Email:</strong> <%= @user.email %></p>
-<p><strong>Rolle:</strong> <%= @user.role %></p>
-<p><strong>Erstellt am:</strong> <%= @user.created_at.strftime("%Y-%m-%d") %></p>
+  <% if flash[:alert] %>
+    <div class="admin-alert admin-alert-error">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-<%= link_to "Bearbeiten", edit_admin_user_path(@user) %> |
-<%= link_to "Zurück", admin_users_path %>
+  <% if flash[:notice] %>
+    <div class="admin-alert admin-alert-success">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <div class="user-detail">
+    <div class="detail-section">
+      <h3>Grunddaten</h3>
+      <div class="detail-item">
+        <span class="detail-label">ID:</span>
+        <span class="detail-value"><%= @user.id %></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Name:</span>
+        <span class="detail-value"><%= @user.name %></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">E-Mail:</span>
+        <span class="detail-value"><%= @user.email %></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Rolle:</span>
+        <span class="detail-value"><span class="user-role role-<%= @user.role %>"><%= @user.role.capitalize %></span></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Erstellt am:</span>
+        <span class="detail-value"><%= @user.created_at.strftime("%d.%m.%Y, %H:%M") %></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Zuletzt aktualisiert:</span>
+        <span class="detail-value"><%= @user.updated_at.strftime("%d.%m.%Y, %H:%M") %></span>
+      </div>
+    </div>
+
+    <% if @user.unconfirmed_email.present? %>
+      <div class="detail-section">
+        <h3>E-Mail-Änderung ausstehend</h3>
+        <div class="detail-item">
+          <span class="detail-label">Neue E-Mail:</span>
+          <span class="detail-value"><%= @user.unconfirmed_email %></span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Token:</span>
+          <span class="detail-value"><%= @user.confirmation_token %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @user != current_user %>
+    <%= button_to "Benutzer löschen", admin_user_path(@user), method: :delete,
+                  data: { confirm: "Bist du sicher, dass du diesen Benutzer löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden." },
+                  class: "admin-btn admin-btn-danger" %>
+  <% end %>
+</div>

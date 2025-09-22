@@ -4,6 +4,22 @@
     <p class="auth-subtitle">Erstelle dein Konto und starte durch</p>
   </div>
 
+  <% if flash[:alert] %>
+    <div class="alert alert-error">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <% if @user&.errors&.any? %>
+    <div class="alert alert-error">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="auth-form">
     <%= form_with model: @user, local: true do |form| %>
       <div class="form-group">

@@ -1,17 +1,50 @@
-<h1>Registrieren</h1>
+<div class="auth-container register-container">
+  <div class="auth-header">
+    <h1>Registrieren</h1>
+    <p class="auth-subtitle">Erstelle dein Konto und starte durch</p>
+  </div>
 
-<%= form_with model: @user, local: true do |form| %>
-  <%= form.label :name %><br>
-  <%= form.text_field :name %><br>
+  <div class="auth-form">
+    <%= form_with model: @user, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :name, "Benutzername" %>
+        <div class="input-group">
+          <div class="input-icon"><i class="icon-user"></i></div>
+          <%= form.text_field :name, placeholder: "Dein Name", class: "form-control" %>
+        </div>
+      </div>
 
-  <%= form.label :email %><br>
-  <%= form.email_field :email %><br>
+      <div class="form-group">
+        <%= form.label :email, "E-Mail" %>
+        <div class="input-group">
+          <div class="input-icon"><i class="icon-mail"></i></div>
+          <%= form.email_field :email, placeholder: "deine@email.de", class: "form-control" %>
+        </div>
+      </div>
 
-  <%= form.label :password %><br>
-  <%= form.password_field :password %><br>
+      <div class="form-group">
+        <%= form.label :password, "Passwort" %>
+        <div class="input-group">
+          <div class="input-icon"><i class="icon-lock"></i></div>
+          <%= form.password_field :password, placeholder: "Min. 8 Zeichen", class: "form-control" %>
+        </div>
+      </div>
 
-  <%= form.label :password_confirmation %><br>
-  <%= form.password_field :password_confirmation %><br>
+      <div class="form-group">
+        <%= form.label :password_confirmation, "Passwort bestätigen" %>
+        <div class="input-group">
+          <div class="input-icon"><i class="icon-lock"></i></div>
+          <%= form.password_field :password_confirmation, placeholder: "Passwort wiederholen", class: "form-control" %>
+        </div>
+      </div>
 
-  <%= form.submit "Registrieren" %>
-<% end %>
+      <div class="form-action">
+        <%= form.submit "Registrieren", class: "btn btn-primary" %>
+      </div>
+
+      <div class="auth-footer">
+        <p>Bereits registriert? <%= link_to "Jetzt anmelden", login_path %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

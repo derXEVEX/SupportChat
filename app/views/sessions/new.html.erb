@@ -1,11 +1,46 @@
-<h1>Login</h1>
+<div class="auth-container login-container">
+  <div class="auth-header">
+    <h1>Anmelden</h1>
+    <p class="auth-subtitle">Willkommen zurück!</p>
+  </div>
 
-<%= form_with url: login_path, method: :post, local: true do |form| %>
-  <%= label_tag :email %><br>
-  <%= email_field_tag :email %><br>
+  <% if flash[:alert] %>
+    <div class="alert alert-error">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-  <%= label_tag :password %><br>
-  <%= password_field_tag :password %><br>
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-  <%= submit_tag "Login" %>
-<% end %>
+  <div class="auth-form">
+    <%= form_with url: login_path, method: :post, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :email, "E-Mail" %>
+        <div class="input-group">
+          <div class="input-icon"><i class="icon-mail"></i></div>
+          <%= form.email_field :email, placeholder: "deine@email.de", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :password, "Passwort" %>
+        <div class="input-group">
+          <div class="input-icon"><i class="icon-lock"></i></div>
+          <%= form.password_field :password, placeholder: "Dein Passwort", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-action">
+        <%= form.submit "Anmelden", class: "btn btn-primary login-btn" %>
+      </div>
+
+      <div class="auth-footer">
+        <p>Noch kein Konto? <%= link_to "Jetzt registrieren", register_path %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

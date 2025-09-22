@@ -10,11 +10,12 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path, notice: "Angemeldet!"
     else
       flash.now[:alert] = "E-Mail oder Passwort falsch"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
-def destroy
+
+  def destroy
   session.delete(:user_id)
   redirect_to login_path, notice: "Du wurdest erfolgreich abgemeldet."
 end

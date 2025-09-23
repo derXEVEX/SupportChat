@@ -20,5 +20,17 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
 
+  resources :support_requests do
+    collection do
+      get :my_requests
+    end
+
+    member do
+      post :claim
+    end
+
+    resources :messages, only: [:create]
+  end
+
 
 end

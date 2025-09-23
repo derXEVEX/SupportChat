@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :support_requests, dependent: :destroy
+
 
   ROLES = %w[user supporter admin].freeze
 

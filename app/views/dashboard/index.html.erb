@@ -80,4 +80,19 @@
       <%= form.submit "Passwort ändern" %>
     <% end %>
   </div>
+  <div class="dashboard-section">
+    <h2 class="section-title">Support</h2>
+    <div class="dashboard-links">
+      <div class="dashboard-link-card">
+        <h3>Support</h3>
+        <p>Hilfe und Unterstützung erhalten</p>
+        <%= link_to "Meine Support-Anfragen", my_requests_support_requests_path, class: "dashboard-link" %>
+        <%= link_to "Neue Support-Anfrage", new_support_request_path, class: "dashboard-link" %>
+
+        <% if current_user.admin? || current_user.supporter? %>
+          <%= link_to "Support-Anfragen verwalten", support_requests_path, class: "dashboard-link admin-link" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

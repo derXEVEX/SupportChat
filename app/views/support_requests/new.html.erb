@@ -1,0 +1,47 @@
+<!-- app/views/support_requests/new.html.erb -->
+<div class="support-container">
+  <div class="support-header">
+    <h1>Neue Support-Anfrage</h1>
+    <p class="support-subtitle">Wir helfen dir gerne bei deinem Problem</p>
+  </div>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-error">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <% if @support_request.errors.any? %>
+    <div class="alert alert-error">
+      <ul>
+        <% @support_request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="support-form">
+    <%= form_with model: @support_request, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :title, "Betreff" %>
+        <%= form.text_field :title, placeholder: "Kurze Beschreibung deines Problems" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :category_id, "Kategorie" %>
+        <%= form.collection_select :category_id, @categories, :id, :name, {prompt: "Wähle eine Kategorie"} %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :initial_message, "Beschreibung" %>
+        <%= form.text_area :initial_message, placeholder: "Bitte beschreibe dein Problem so genau wie möglich", rows: 5 %>
+      </div>
+
+      <div class="form-action">
+        <%= form.submit "Anfrage senden", class: "btn btn-primary" %>
+        <%= link_to "Abbrechen", my_requests_support_requests_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

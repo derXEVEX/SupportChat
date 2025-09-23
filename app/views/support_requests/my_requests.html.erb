@@ -1,0 +1,52 @@
+<!-- app/views/support_requests/my_requests.html.erb -->
+<div class="support-container">
+  <div class="support-header">
+    <div>
+      <h1>Meine Support-Anfragen</h1>
+      <p class="support-subtitle">Übersicht deiner Support-Anfragen</p>
+    </div>
+    <div class="header-actions">
+      <%= link_to "Neue Anfrage", new_support_request_path, class: "btn btn-primary" %>
+      <%= link_to "Zurück zum Dashboard", dashboard_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if @support_requests.empty? %>
+    <div class="empty-state">
+      <p>Du hast noch keine Support-Anfragen erstellt.</p>
+    </div>
+  <% else %>
+    <table class="support-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Betreff</th>
+        <th>Kategorie</th>
+        <th>Status</th>
+        <th>Erstellt am</th>
+        <th>Aktionen</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @support_requests.each do |request| %>
+        <tr>
+          <td><%= request.id %></td>
+          <td><%= request.title %></td>
+          <td><%= request.category.name %></td>
+          <td><span class="status status-<%= request.status.parameterize %>"><%= request.status %></span></td>
+          <td><%= request.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+          <td>
+            <%= link_to "Anzeigen", support_request_path(request), class: "action-link view-link" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

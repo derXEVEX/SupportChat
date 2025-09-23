@@ -14,3 +14,5 @@ User.create!(
   password_confirmation: "verysecurepassword12",
   role: "admin"
 ) unless User.exists?(email: "admin@example.com")
+
+

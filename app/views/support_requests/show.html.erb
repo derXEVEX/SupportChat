@@ -1,0 +1,74 @@
+<!-- app/views/support_requests/show.html.erb -->
+<div class="support-container">
+  <div class="support-header">
+    <div>
+      <h1><%= @support_request.title %></h1>
+      <p class="support-meta">
+        Status: <span class="status status-<%= @support_request.status.parameterize %>"><%= @support_request.status %></span>
+        | Kategorie: <%= @support_request.category.name %>
+        | Erstellt am: <%= @support_request.created_at.strftime("%d.%m.%Y %H:%M") %>
+      </p>
+    </div>
+    <div class="header-actions">
+      <% if current_user.admin? || current_user.supporter? %>
+        <%= link_to "Alle Anfragen", support_requests_path, class: "btn btn-secondary" %>
+
+        <% if @support_request.status == "offen" %>
+          <%= button_to "Anfrage übernehmen", claim_support_request_path(@support_request), method: :post, class: "btn btn-primary" %>
+        <% end %>
+
+        <% if @support_request.status != "geschlossen" %>
+          <%= form_with model: @support_request, local: true, class: "inline-form" do |form| %>
+            <%= form.hidden_field :status, value: "geschlossen" %>
+            <%= form.submit "Anfrage schließen", class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= link_to "Meine Anfragen", my_requests_support_requests_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-error">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <div class="message-container">
+    <% @messages.each do |message| %>
+      <div class="message <%= message.user == current_user ? 'message-mine' : 'message-other' %>">
+        <div class="message-header">
+          <span class="message-author"><%= message.user.name %></span>
+          <span class="message-time"><%= message.created_at.strftime("%d.%m.%Y %H:%M") %></span>
+        </div>
+        <div class="message-content">
+          <%= simple_format(message.content) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% unless @support_request.closed? %>
+    <div class="reply-form">
+      <%= form_with model: [@support_request, @message], local: true do |form| %>
+        <div class="form-group">
+          <%= form.label :content, "Antwort verfassen" %>
+          <%= form.text_area :content, rows: 3, placeholder: "Deine Antwort..." %>
+        </div>
+
+        <%= form.submit "Senden", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="closed-notice">
+      <p>Diese Anfrage wurde geschlossen. Es können keine weiteren Nachrichten gesendet werden.</p>
+    </div>
+  <% end %>
+</div>

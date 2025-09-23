@@ -1,0 +1,551 @@
+/* Support-Anfragen Styling */
+.support-container {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    margin: 30px auto;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.support-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8px;
+    width: 100%;
+    background: linear-gradient(90deg, #4481eb, #04befe);
+}
+
+.support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.support-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    color: #3a7bd5;
+}
+
+.support-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.support-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* Tabellen-Styling */
+.support-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.support-table thead {
+    background: linear-gradient(90deg, #4481eb, #04befe);
+    color: #fff;
+}
+
+.support-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.support-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.support-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.support-table tbody tr:hover {
+    background-color: #f9fafc;
+}
+
+.support-table td {
+    padding: 15px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Status-Badges */
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-offen {
+    background-color: rgba(68, 129, 235, 0.1);
+    color: #4481eb;
+}
+
+.status-in-bearbeitung {
+    background-color: rgba(255, 152, 0, 0.1);
+    color: #ff9800;
+}
+
+.status-geschlossen {
+    background-color: rgba(46, 213, 115, 0.1);
+    color: #2ed573;
+}
+
+/* Action-Links */
+.action-links {
+    display: flex;
+    gap: 10px;
+}
+
+.action-link {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.view-link {
+    background-color: rgba(68, 129, 235, 0.1);
+    color: #4481eb;
+}
+
+.edit-link {
+    background-color: rgba(46, 213, 115, 0.1);
+    color: #2ed573;
+}
+
+.delete-link {
+    background-color: rgba(255, 76, 81, 0.1);
+    color: #ff4c51;
+}
+
+.action-link:hover {
+    transform: translateY(-2px);
+}
+
+.view-link:hover {
+    background-color: rgba(68, 129, 235, 0.2);
+}
+
+.edit-link:hover {
+    background-color: rgba(46, 213, 115, 0.2);
+}
+
+.delete-link:hover {
+    background-color: rgba(255, 76, 81, 0.2);
+}
+
+/* Button-Styling */
+.btn {
+    cursor: pointer;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #4481eb, #04befe);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(68, 129, 235, 0.2);
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 8px 15px rgba(68, 129, 235, 0.3);
+}
+
+.btn-danger:hover {
+    box-shadow: 0 8px 15px rgba(255, 65, 108, 0.3);
+}
+
+.btn-secondary:hover {
+    background-color: #e5e5e5;
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Header-Aktionen */
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+/* Nachrichten-Bereich */
+.message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 85%;
+    position: relative;
+}
+
+.message-mine {
+    background-color: rgba(68, 129, 235, 0.1);
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+.message-mine:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-left-color: rgba(68, 129, 235, 0.1);
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.message-other {
+    background-color: #f9fafc;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.message-other:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: #f9fafc;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.message-author {
+    font-weight: 600;
+    color: #3a7bd5;
+}
+
+.message-time {
+    color: #999;
+    font-size: 12px;
+}
+
+.message-content {
+    color: #333;
+    line-height: 1.5;
+}
+
+.message-content p {
+    margin: 5px 0;
+}
+
+/* Antwort-Formular */
+.reply-form {
+    background-color: #f9fafc;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border-left: 4px solid #4481eb;
+}
+
+.reply-form .form-group {
+    margin-bottom: 20px;
+}
+
+.reply-form label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e1e5ee;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.3s;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.reply-form textarea:focus {
+    border-color: #4481eb;
+    box-shadow: 0 0 0 4px rgba(68, 129, 235, 0.1);
+    outline: none;
+}
+
+/* Leerer Zustand */
+.empty-state {
+    background-color: #f9fafc;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 0;
+    border: 1px dashed #e1e5ee;
+}
+
+.empty-state p {
+    color: #888;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Neue Anfrage Formular */
+.support-form {
+    background-color: #f9fafc;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 4px solid #4481eb;
+}
+
+.support-form .form-group {
+    margin-bottom: 20px;
+}
+
+.support-form label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.support-form input[type="text"],
+.support-form select,
+.support-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e1e5ee;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.support-form input[type="text"]:focus,
+.support-form select:focus,
+.support-form textarea:focus {
+    border-color: #4481eb;
+    box-shadow: 0 0 0 4px rgba(68, 129, 235, 0.1);
+    outline: none;
+}
+
+.support-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.support-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23555' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 15px) center;
+    padding-right: 35px;
+}
+
+.form-action {
+    margin-top: 30px;
+}
+
+/* Geschlossene Anfrage Hinweis */
+.closed-notice {
+    background-color: #f9fafc;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border-left: 4px solid #ff416c;
+}
+
+.closed-notice p {
+    color: #888;
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Alert-Boxen */
+.alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.alert-error {
+    background-color: rgba(255, 76, 81, 0.1);
+    border-left: 4px solid #ff4c51;
+    color: #e03e42;
+}
+
+.alert-success {
+    background-color: rgba(46, 213, 115, 0.1);
+    border-left: 4px solid #2ed573;
+    color: #20bf6b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .support-container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .support-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+
+    .support-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+}
+
+/* Dashboard-Integration */
+.dashboard-link-card {
+    background-color: #f9fafc;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    border-left: 4px solid #4481eb;
+}
+
+.dashboard-link-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #3a7bd5;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.dashboard-link-card p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.dashboard-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(68, 129, 235, 0.1);
+    color: #4481eb;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.dashboard-link:hover {
+    background-color: rgba(68, 129, 235, 0.2);
+    transform: translateY(-2px);
+}
+
+.admin-link {
+    background-color: rgba(142, 45, 226, 0.1);
+    color: #8E2DE2;
+}
+
+.admin-link:hover {
+    background-color: rgba(142, 45, 226, 0.2);
+}
+
+.dashboard-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dashboard-section {
+    margin-top: 30px;
+}

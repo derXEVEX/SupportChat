@@ -549,3 +549,77 @@
 .dashboard-section {
     margin-top: 30px;
 }
+/* Admin-Aktionen für Support-Anfragen */
+.admin-action-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+.admin-action-group .btn {
+    flex: 1;
+}
+
+.btn-delete {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.2);
+}
+
+.btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(255, 65, 108, 0.3);
+}
+
+.delete-confirm {
+    background-color: rgba(255, 76, 81, 0.1);
+    border-left: 4px solid #ff4c51;
+    color: #e03e42;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.delete-confirm h3 {
+    color: #e03e42;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.delete-confirm p {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.delete-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-confirm-delete {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.2);
+}
+
+.btn-cancel {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+.btn-confirm-delete:hover {
+    box-shadow: 0 8px 15px rgba(255, 65, 108, 0.3);
+}
+
+.btn-cancel:hover {
+    background-color: #e5e5e5;
+}
+
+@media (max-width: 768px) {
+    .admin-action-group {
+        flex-direction: column;
+    }
+}

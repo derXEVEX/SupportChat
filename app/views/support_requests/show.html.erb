@@ -71,4 +71,22 @@
       <p>Diese Anfrage wurde geschlossen. Es können keine weiteren Nachrichten gesendet werden.</p>
     </div>
   <% end %>
+
+  <!-- Hier beginnt der neue Admin-Bereich für Löschfunktion -->
+  <% if current_user.admin? %>
+    <div class="admin-action-group">
+      <% if params[:confirm_delete] %>
+        <div class="delete-confirm">
+          <h3>Support-Anfrage löschen</h3>
+          <p>Bist du sicher, dass du diese Support-Anfrage mit allen zugehörigen Nachrichten unwiderruflich löschen möchtest?</p>
+          <div class="delete-actions">
+            <%= button_to "Ja, endgültig löschen", support_request_path(@support_request), method: :delete, class: "btn btn-confirm-delete" %>
+            <%= link_to "Abbrechen", support_request_path(@support_request), class: "btn btn-cancel" %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to "Support-Anfrage löschen", support_request_path(@support_request, confirm_delete: true), class: "btn btn-delete" %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

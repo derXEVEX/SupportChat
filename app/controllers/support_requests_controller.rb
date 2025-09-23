@@ -47,6 +47,23 @@ class SupportRequestsController < ApplicationController
     end
   end
 
+  def destroy
+    @support_request = SupportRequest.find(params[:id])
+
+    unless current_user.admin?
+      redirect_to support_request_path(@support_request), alert: "Du hast keine Berechtigung, diese Anfrage zu löschen."
+      return
+    end
+
+    if @support_request.destroy
+      redirect_to support_requests_path, notice: "Die Support-Anfrage wurde erfolgreich gelöscht."
+    else
+      redirect_to support_request_path(@support_request), alert: "Die Support-Anfrage konnte nicht gelöscht werden."
+    end
+  end
+
+
+
   def claim
     if @support_request.status == "offen"
       @support_request.update(status: "in Bearbeitung")

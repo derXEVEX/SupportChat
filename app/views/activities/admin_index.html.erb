@@ -1,0 +1,53 @@
+<div class="support-container">
+  <div class="support-header">
+    <div>
+      <h1>Aktivitätsprotokoll</h1>
+      <p class="support-subtitle">Alle Aktivitäten im System</p>
+    </div>
+    <div class="header-actions">
+      <%= link_to "Zurück zum Dashboard", dashboard_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <% if @activities.empty? %>
+    <div class="empty-state">
+      <p>Es wurden noch keine Aktivitäten aufgezeichnet.</p>
+    </div>
+  <% else %>
+    <div class="activity-feed">
+      <% @activities.each do |activity| %>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <% if activity.event == 'create' %>
+              <i class="activity-icon-create"></i>
+            <% elsif activity.event == 'update' %>
+              <i class="activity-icon-update"></i>
+            <% elsif activity.event == 'destroy' %>
+              <i class="activity-icon-delete"></i>
+            <% end %>
+          </div>
+          <div class="activity-content">
+            <div class="activity-header">
+              <span class="activity-time"><%= activity.created_at.strftime("%d.%m.%Y %H:%M") %></span>
+              <span class="activity-user"><%= User.find_by(id: activity.whodunnit)&.name || 'Unbekannter Benutzer' %></span>
+            </div>
+            <div class="activity-description">
+              <%= render_activity_description(activity) %>
+            </div>
+            <% if activity.changeset.present? %>
+          <div class="activity-changes">
+                <button class="changes-toggle">Änderungen anzeigen</button>
+                <div class="changes-details">
+                  <pre><%= JSON.pretty_generate(activity.changeset) rescue activity.changeset %></pre>                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="pagination">
+      <%= will_paginate @activities %>
+    </div>
+  <% end %>
+</div>

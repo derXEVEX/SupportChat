@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_19_112405) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_23_095258) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -49,6 +49,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_19_112405) do
     t.string "confirmation_token"
     t.datetime "confirmation_sent_at"
     t.datetime "confirmed_at"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "whodunnit"
+    t.datetime "created_at"
+    t.bigint "item_id", null: false
+    t.string "item_type", null: false
+    t.string "event", null: false
+    t.text "object", limit: 1073741823
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   add_foreign_key "messages", "support_requests"

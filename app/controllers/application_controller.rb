@@ -16,4 +16,18 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to login_path, alert: "Bitte einloggen." unless current_user
   end
+
+  before_action :set_paper_trail_whodunnit
+
+  def user_for_paper_trail
+    current_user&.id
+  end
+
+  def authenticate_user!
+    unless current_user
+      flash[:alert] = "Du musst angemeldet sein, um diese Seite zu sehen."
+      redirect_to login_path
+      return
+    end
+  end
 end

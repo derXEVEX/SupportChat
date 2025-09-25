@@ -32,5 +32,11 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
-
+  resources :activities, only: [:index] do
+    collection do
+      get :admin_index
+    end
+  end
 end
+
+

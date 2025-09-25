@@ -1,0 +1,21 @@
+<div class="activity-item">
+  <div class="activity-icon activity-icon-<%= activity.event %>"></div>
+  <div class="activity-content">
+    <div class="activity-header">
+      <span class="activity-time"><%= activity.created_at.strftime("%d.%m.%Y %H:%M") %></span>
+      <span class="activity-user"><%= User.find_by(id: activity.whodunnit)&.name || "Unbekannter Benutzer" %></span>
+    </div>
+    <div class="activity-description">
+      <%= render_activity_description(activity) %>
+    </div>
+
+    <% if activity.object_changes.present? %>
+      <div class="activity-changes">
+        <button class="changes-toggle">Änderungen anzeigen</button>
+        <div class="changes-details">
+          <pre><%= JSON.pretty_generate(YAML.load(activity.object_changes)) rescue activity.object_changes %></pre>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

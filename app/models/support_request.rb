@@ -1,5 +1,6 @@
-# app/models/support_request.rb
+
 class SupportRequest < ApplicationRecord
+  has_paper_trail
   belongs_to :user
   belongs_to :category
   has_many :messages, dependent: :destroy

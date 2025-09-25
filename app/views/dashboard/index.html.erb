@@ -88,9 +88,12 @@
         <p>Hilfe und Unterstützung erhalten</p>
         <%= link_to "Meine Support-Anfragen", my_requests_support_requests_path, class: "dashboard-link" %>
         <%= link_to "Neue Support-Anfrage", new_support_request_path, class: "dashboard-link" %>
+        <%= link_to "Meine Aktivitäten", activities_path, class: "dashboard-link" %>
+
 
         <% if current_user.admin? || current_user.supporter? %>
           <%= link_to "Support-Anfragen verwalten", support_requests_path, class: "dashboard-link admin-link" %>
+          <%= link_to "Aktivitätsprotokoll", admin_index_activities_path, class: "dashboard-link admin-link" %>
         <% end %>
       </div>
     </div>

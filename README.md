@@ -1,24 +1,16 @@
-# README
+Technische Anforderungen
+Ruby: 3.0+
+Rails: 8.0.2+
+SQLite3: 2.1+
+Node.js: für JavaScript-Assets
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Abhängigkeiten installieren
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed 
 
-Things you may want to cover:
+Server starten
+bin/rails server
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+http://localhost:3000

@@ -24,7 +24,7 @@ gem "pundit"
 
 gem 'paper_trail'
 
-gem 'will_paginate', '~> 3.3'
+gem 'will_paginate', '~> 4.0'
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
